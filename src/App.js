@@ -1,9 +1,14 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useMediaQuery } from "@chakra-ui/react";
 import { useState } from "react";
 import Sidebar from "./components/Sidebar";
 import Visualiser from "./components/Visualiser";
-
+import Hero from "./components/InfoPage";
+import Navbar from "./components/Navbar";
+import AboutUs from "./components/Types";
+import About from "./components/About";
+import Footer from "./components/Footer";
 function App() {
+  const [isLargerThan48] = useMediaQuery("(min-width: 48em)");
   const [arr, setArr] = useState([]);
   const [generating, setGenerating] = useState(false);
   const [sorting, setSorting] = useState(false);
@@ -42,28 +47,45 @@ function App() {
 
               setTimeout(() => {
                 setArr([...newStep]);
-              }, j * 100);
+              }, j * 3000);
             }
             if (i === arr.length - 2) {
               setSorting(false);
             }
           }
-        }, i * 1000);
+        }, i * 5000);
       }
-    }, 500);
+    }, 5000);
   };
   return (
-    <Box p={"4"}>
-      <Flex gap={"4"}>
-        <Sidebar
-          generateArr={generateArr}
-          generating={generating}
-          sorting={sorting}
-          sort={sort}
-        />
-        <Visualiser data={arr} />
-      </Flex>
-    </Box>
+    <>
+      <Navbar />
+      <Hero />
+      <AboutUs />
+      <Box p={"4"}>
+        <Flex
+          minH="70vh"
+          alignItems="center"
+          justifyContent="space-between"
+          w="full"
+          py="10"
+          px={isLargerThan48 ? "16" : "6"}
+          flexWrap="wrap"
+          flexDirection={isLargerThan48 ? "row" : "column"}
+          gap={8}
+        >
+          <Sidebar
+            generateArr={generateArr}
+            generating={generating}
+            sorting={sorting}
+            sort={sort}
+          />
+          <Visualiser data={arr} />
+        </Flex>
+      </Box>
+      <About />
+      <Footer />
+    </>
   );
 }
 

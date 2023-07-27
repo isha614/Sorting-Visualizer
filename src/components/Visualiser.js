@@ -8,7 +8,7 @@ const Visualiser = ({ data }) => {
       display="grid"
       gridAutoFlow={"column"}
       gridAutoColumns={"auto"}
-      bg="gray.100"
+      bg="white.100"
       minH={"full"}
       overflow={"auto"}
       flex="1"
@@ -25,8 +25,7 @@ const Visualiser = ({ data }) => {
             <Box
               roundedTop={"sm"}
               border={"1px"}
-              borderColor={"purple.200"}
-              bg={"purple.300"}
+              bg={"#e1ad01"}
               style={{ height: `${d}px` }}
             ></Box>
           </Box>

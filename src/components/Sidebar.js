@@ -9,6 +9,7 @@ import {
   SliderFilledTrack,
   SliderThumb,
   SliderTrack,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 
@@ -17,6 +18,7 @@ const Sidebar = ({ generateArr, sort, generating, sorting }) => {
     size: 10,
     algorithm: "linear",
   });
+  const [isLargerThan62] = useMediaQuery("(min-width: 62em)");
   console.log(formState, generating, sorting);
   return (
     <Box minW="xs" bg="gray.100" p={"4"} borderRadius="lg" overflow="hidden">
@@ -58,7 +60,7 @@ const Sidebar = ({ generateArr, sort, generating, sorting }) => {
             generateArr(formState);
           }}
           loadingText="Generating"
-          colorScheme="purple"
+          colorScheme="yellow"
         >
           Generate Array
         </Button>
@@ -68,8 +70,7 @@ const Sidebar = ({ generateArr, sort, generating, sorting }) => {
           isLoading={sorting}
           loadingText="Sorting"
           onClick={sort}
-          colorScheme="purple"
-          variant="outline"
+          colorScheme="yellow"
         >
           Sort
         </Button>
